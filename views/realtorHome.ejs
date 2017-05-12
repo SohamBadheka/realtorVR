@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Best website for housing in VR in California">
+	<meta content="Realtor, San Jose Best Realtor, Properties, Listings, Houses in San Jose,
+	Houses in California, RealtorVR, Best housing application in VR, Best realtor website VR" name="keywords">
+
+	<meta content = "RealtorVR" name = "author">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+	<script type="text/javascript" src="angular/filestack.js"></script>
+
+	<script src = "angular/realtorHome.js"></script>
+	<!-- CSS -->
+
+    <title>SysGS</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Theme CSS -->
+    <link href="css/agency.css" rel="stylesheet">
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4yuc3-pcC63PCP509-_L1_Ue01Iq_egA&signed_in=true&callback=initMap"> </script>
+
+    <style>
+    #map {
+    height: 500px;
+    width: 700px;
+    }
+
+    html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    }  
+	
+	.formLabel
+	{
+		font-weight:normal;
+	}
+	
+</style>
+
+
+</head>
+
+<body id="page-top" class="index" ng-app="realtorHome">
+
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">Realtor</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#services">Add Listing</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#portfolio">View Listing</a>
+						<!-- if you change id from portfolio to open house the hover classes needs to be renamed in css as well so didnt chnage it -->
+                    </li>
+                    <li>
+                    <a class="page-scroll" href="#about">Profile</a>
+                    </li>
+					<li>
+                        <a class="page-scroll" href="/signout">SignOut</a>
+                    </li>
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-lead-in">Welcome To Your SysGS Profile!</div>
+                <!-- <div class="intro-heading">It's Nice To Meet You</div> -->
+                <a href="#services" class="page-scroll btn btn-xl">Add New Property Listing</a>
+            </div>
+        </div>
+    </header>
+
+	<!-- Add New Listing Section -->
+	<section id="services">
+        <div class="container">
+            
+			<div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Add Listing</h2>
+                    <h3 class="section-subheading text-muted">Add your New Listing Details to make it available for public view.</h3>
+                </div>
+            </div>
+            
+			<div class="row">
+				<div class="col-sm-6 col-sm-offset-3 form-box">	
+					<div class="form-bottom">
+						<form role="form" class="login-form" ng-controller="realtorHome">
+						
+						<div>
+							<h3>Site Details</h3>
+							<div class="form-group">
+								<label class="formLabel" for="form-address1">Address1*</label>
+								<input type="text" ng-model = "address" placeholder="address" class="form-control" id="address" required>
+							</div>
+
+							
+							<div>
+								<div class="form-group" style="width:32%; float:left">
+									<label class="formLabel" for="form-city">City*</label>
+									<input type="text" name="form-city" placeholder="City" ng-model = "city" class="form-control" id="city" required>
+								</div>
+								
+								<div class="form-group" style="width:32%; float:left; margin-left:12px">
+									<label class="formLabel" for="form-state">State*</label>
+									<input list="states" name="form-password" placeholder="State" ng-model = "state" class="form-control" id="state" required>
+										<datalist id="states">
+											<option value="AL">Alabama</option>
+											<option value="AK">Alaska</option>
+											<option value="AZ">Arizona</option>
+											<option value="AR">Arkansas</option>
+											<option value="CA">California</option>
+											<option value="CO">Colorado</option>
+											<option value="CT">Connecticut</option>
+											<option value="DE">Delaware</option>
+											<option value="DC">District Of Columbia</option>
+											<option value="FL">Florida</option>
+											<option value="GA">Georgia</option>
+											<option value="HI">Hawaii</option>
+											<option value="ID">Idaho</option>
+											<option value="IL">Illinois</option>
+											<option value="IN">Indiana</option>
+											<option value="IA">Iowa</option>
+											<option value="KS">Kansas</option>
+											<option value="KY">Kentucky</option>
+											<option value="LA">Louisiana</option>
+											<option value="ME">Maine</option>
+											<option value="MD">Maryland</option>
+											<option value="MA">Massachusetts</option>
+											<option value="MI">Michigan</option>
+											<option value="MN">Minnesota</option>
+											<option value="MS">Mississippi</option>
+											<option value="MO">Missouri</option>
+											<option value="MT">Montana</option>
+											<option value="NE">Nebraska</option>
+											<option value="NV">Nevada</option>
+											<option value="NH">New Hampshire</option>
+											<option value="NJ">New Jersey</option>
+											<option value="NM">New Mexico</option>
+											<option value="NY">New York</option>
+											<option value="NC">North Carolina</option>
+											<option value="ND">North Dakota</option>
+											<option value="OH">Ohio</option>
+											<option value="OK">Oklahoma</option>
+											<option value="OR">Oregon</option>
+											<option value="PA">Pennsylvania</option>
+											<option value="RI">Rhode Island</option>
+											<option value="SC">South Carolina</option>
+											<option value="SD">South Dakota</option>
+											<option value="TN">Tennessee</option>
+											<option value="TX">Texas</option>
+											<option value="UT">Utah</option>
+											<option value="VT">Vermont</option>
+											<option value="VA">Virginia</option>
+											<option value="WA">Washington</option>
+											<option value="WV">West Virginia</option>
+											<option value="WI">Wisconsin</option>
+											<option value="WY">Wyoming</option>
+										</datalist>
+								</div>
+								
+								<div class="form-group" style="width:32%; float:right">
+									<label class="formLabel" for="form-zipCode">Zip Code*</label>
+									<input type="number" ng-model = "zip" name="form-zipCode" placeholder="Zip Code" class="form-control" id="zipCode" required>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label class="formLabel" for="form-neighbourhood">Neighbourhood</label>
+								<input type="text" name="form-neighbourhood" ng-model = "neighbourhood" placeholder="Neighbourhood" class="form-control" id="neighbourhood">
+							</div>
+							
+							<div class="form-group">
+								<label class="formLabel" for="form-description">Description*</label>
+								<textarea type="textarea" name="form-description" ng-model = "description" placeholder="Description" class="form-control" id="description" rows="4" cols="50" required></textarea>
+							</div>
+						</div>
+						
+						<div>
+							<h3>Site Features</h3>
+							
+							<div>
+								<div class="form-group" style="width:48%; float:left">
+									<label class="formLabel" for="form-price">Price*</label>
+									<input type="number" ng-model = "price" name="form-price" placeholder="$Price" class="form-control" id="price" required>
+								</div>
+								
+								<div class="form-group"  style="width:48%; float:right">
+									<label class="formLabel" for="form-status">Status</label>
+									<input list="status" name="form-status" ng-model="status" placeholder="Property Status" class="form-control" id="status">
+										<datalist id="status">
+											<option value="Open House">
+											<option value="Hold">
+											<option value="Under Process">
+											<option value="Sold">
+										</datalist>
+								</div>
+							</div>
+							
+
+
+							
+							<div>
+								<div class="form-group"  style="width:32%; float:left">
+									<label class="formLabel" for="form-parking">Parking</label>
+									<input type="number" ng-model="parking" name="form-parking" placeholder="# of Parking" class="form-control" id="parking">
+								</div>
+								<div class="form-group"  style="width:32%; float:left; margin-left:12px">
+									<label class="formLabel" for="form-fireplace">Fireplace</label>
+									<input type="number" ng-model="fireplace"  name="form-fireplace" placeholder="# of Fireplace" class="form-control" id="fireplace">
+								</div>
+								<div class="form-group"  style="width:32%; float:right">
+									<label class="formLabel" for="form-garage">Garage</label>
+									<input type="number" ng-model="garage" name="form-garage" placeholder="# of Garage" class="form-control" id="garage">
+								</div>
+							</div>
+							
+						</div>
+						
+
+						
+						<div>
+							<h3>Enter the House Images here</h3>
+							<div class="form-group">
+								<!--<script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>-->
+								<button type="button" ng-click = "pickImage();">upload</button>
+								<!--<input filepicker type="filepicker-dragdrop" data-fp-services="computer,facebook,dropbox,box" on-success="pickResults=event.fpfile" />;-->
+								<p ng-repeat = "k in properties">{{k.url}} </p>
+
+							</div>
+						</div>
+						<br><br>
+						
+						<button type="button" ng-click="addProperty();" id="updateProfile" value="Signup as Realtor" style="margin-left:150px;height:40px;width:300px;background-color:#2a6ddb; color:white; border-color:#2a6ddb">
+						Add Listing
+						</button>		
+						
+						</form>
+					</div>
+				</div>
+			</div>
+			
+        </div>
+    </section>
+
+	<!-- Existing Property Grid Section -->
+	<div ng-controller="listings">
+
+	<section id="portfolio" class="bg-light-gray">
+		<div class="container">
+
+			<div class="row">
+
+				<div class="col-md-4 col-sm-6 portfolio-item" ng-repeat = "listing in listings">
+					<a href="#portfolioModal" class="portfolio-link" data-toggle="modal" ng-click="openModal(listing.address)";>
+						<div class="portfolio-hover">
+							<div class="portfolio-hover-content">
+								<i class="fa fa-plus fa-3x"></i>
+							</div>
+						</div>
+						<img src={{listing.image}} class="img-responsive" alt="" width="100%" style="height:250px">
+					</a>
+					<div class="portfolio-caption">
+						<h4>{{listing.price}}</h4>
+
+						<p class="text-muted">{{listing.address}}</p>
+					</div>
+				</div>
+			</div>
+			</div>
+		</section>
+
+
+					<div class="portfolio-modal modal fade" id="portfolioModal" tabindex="0" role="dialog" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="close-modal" data-dismiss="modal">
+									<div class="lr">
+										<div class="rl">
+										</div>
+									</div>
+								</div>
+								<div class="container">
+									<div class="row">
+										<div class="col-md-8 col-lg-offset-2">
+											<div class="modal-body">
+												<!-- Project Details Go Here -->
+												<img src ={{listing.image}} height="500px" width="400px">
+												<h2>{{listing.address}}</h2>
+												<p class="item-intro text-muted">{{listing.city}}</p>
+
+												<!-- Not Needed using Carousel
+                                                <img class="img-responsive img-centered" src="img/house/House1/home1_popIMG.jpg" alt="">
+                                                -->
+
+												<p style="text-align:justify">
+													{{listing.description}}
+												</p>
+
+												<p style="text-align:left"><strong>Features</strong> of this property<p>
+												<hr style="color:light-gray; margin-top:-30px">
+												<ul class="list-inline">
+													<li>
+														<ul style="list-style-type:none">
+															<li>Price: ${{listing.price}}</li>
+															<li>3 Bedrooms</li>
+															<li>1 full Bathroom</li>
+															<li>Single-Family Home</li>
+														</ul>
+													</li>
+													<li>
+														<ul style="list-style-type:none">
+															<li>Status: For Sale</li>
+															<li>Lot Size: 6,011 sqft</li>
+															<li>Built in 1949</li>
+															<li>Neighborhood: Downtown San Jose</li>
+														</ul>
+													</li>
+													<li>
+														<ul style="list-style-type:none">
+															<li>Zip: 95128</li>
+															<li>1,040 sqft</li>
+															<li>Parking: Garage 1</li>
+															<li>Stories: 1 story</li>
+														</ul>
+													</li>
+												</ul>
+
+
+
+												<p style="text-align:left"><strong>Agent</strong> for this property<p>
+												<hr style="color:light-gray; margin-top:-30px">
+												<ul class="list-inline" style="text-align:left">
+													<li>{{listing.owner}}</li>
+													<li>Reality One Group</li>
+												</ul>
+
+												<br>
+												<p style="text-align:left"><strong>Directions</strong> for this property<p>
+												<hr style="color:light-gray; margin-top:-30px">
+												<br>
+												<button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+
+
+	</div>
+
+	<!-- Profile Section -->
+	<section id="about">
+		<div>
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<h2 class="section-heading">Profile</h2>
+					<h3 class="section-subheading text-muted">Keep your profile updated!</h3>
+				</div>
+			</div>
+			<div class="row">
+			<div class="col-sm-6 col-sm-offset-3 form-box">	
+				<div class="form-bottom">
+					<form role="form" class="login-form">
+						
+						<div>
+							<div class="form-group" style="width:48%; float:left">
+								<label class="formLabel" for="form-firstName">First Name</label>
+								<input type="text" name="form-firstName" placeholder="FirstName" class="form-control" id="firstName" required>
+							</div>
+							<div class="form-group" style="width:48%; float:right">
+								<label class="formLabel" for="form-lastName">Last Name</label>
+								<input type="text" name="form-lastName" placeholder="LastName" class="form-control" id="lastName" required>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="formLabel" for="form-password">Email</label>
+							<input type="email" name="form-password" placeholder="EmailAddress" class="form-control" id="email" required>
+						</div>
+						
+						<div class="form-group">
+							<label class="formLabel" for="form-password">Phone Number</label>
+							<input type="number" name="form-password" placeholder="(XXX)XXX XXXX" class="form-control" id="userPhone" required>
+						</div>
+						
+						<div class="form-group">
+							<label class="formLabel" for="form-companyName">Company Name</label>
+							<input type="text" name="form-companyName" placeholder="CompanyName" class="form-control" id="userPhone" required>
+						</div>
+						
+						<button type="submit" id="updateProfile" value="Signup as Realtor" style="margin-left:213px;height:40px;width:300px;background-color:#2a6ddb; color:white; border-color:#2a6ddb">
+						Update Profile
+						</button>									
+					</form>
+				</div>
+			</div>
+		</div>
+		</div>
+	</section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <span class="copyright">Copyright &copy; SysGS.com 2017</span>
+                </div>
+                <div class="col-md-4">
+
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline quicklinks">
+                        <li><a href="#">Privacy Policy</a>
+                        </li>
+                        <li><a href="#">Terms of Use</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Portfolio Modals -->
+    <!-- Use the modals below to showcase details about your portfolio projects! -->
+
+    <!-- Portfolio Modal 1 -->
+
+    <!-- Portfolio Modal 6 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal">
+                    <div class="lr">
+                        <div class="rl">
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2">
+                            <div class="modal-body">
+                                <!-- Project Details Go Here -->
+                                <h2>Residence 2 - Plan 2028 Plan</h2>
+                                <p class="item-intro text-muted">San Jose, CA 95123 (Edenvale)</p>
+                                <!-- <img class="img-responsive img-centered" src="img/house/House6/home6_popIMG.jpg" alt=""> -->
+
+								<!-- Carosel Start -->
+
+								  <div id="myCarousel6" class="carousel slide" data-ride="carousel">
+									<!-- Indicators -->
+									<ol class="carousel-indicators">
+									  <li data-target="#myCarousel6" data-slide-to="0" class="active"></li>
+									  <li data-target="#myCarousel6" data-slide-to="1"></li>
+									  <li data-target="#myCarousel6" data-slide-to="2"></li>
+									  <li data-target="#myCarousel6" data-slide-to="3"></li>
+									</ol>
+
+									<!-- Wrapper for slides1 -->
+									<div class="carousel-inner">
+									  <div class="item active">
+										<img src="img/house/House6/home6_popIMG.jpg" alt="Image 1" style="width:100%; height:550px">
+									  </div>
+
+									  <div class="item">
+										<img src="img/house/House6/home6_popIMG2.jpg" alt="Image 2" style="width:100%; height:550px">
+									  </div>
+
+									  <div class="item">
+										<img src="img/house/House6/home6_popIMG3.jpg" alt="Image 3" style="width:100%; height:550px">
+									  </div>
+
+									  <div class="item">
+										<img src="img/house/House6/home6_popIMG4.jpg" alt="Image 4" style="width:100%; height:550px">
+									  </div>
+									</div>
+
+									<!-- Left and right controls -->
+									<a class="left carousel-control" href="#myCarousel6" data-slide="prev" style="background:transparent">
+									  <span class="glyphicon glyphicon-chevron-left"></span>
+									  <span class="sr-only">Previous</span>
+									</a>
+									<a class="right carousel-control" href="#myCarousel6" data-slide="next" style="background:transparent">
+									  <span class="glyphicon glyphicon-chevron-right"></span>
+									  <span class="sr-only">Next</span>
+									</a>
+								  </div>
+
+                                <!--Carosel End -->
+
+								<p style="text-align:justify">
+								The Residence 2 at Ellington features a three bedroom townhome with an option to turn the third bedroom into a den. The contemporary kitchen centers around a large island and also includes a walk-in pantry. The kitchen flows into the great room with access to the outdoor deck. The master bedroom includes an oversized walk-in closet and master bath with dual sinks and tile surround shower. You'll love living in this Everything's Included home! Below are some of our amazing included features: Tankless water heater Two-tone interior paint USB charging outlets Upgraded flooring Granite slab. Countertops with pencil edge and full backsplash European-style maple cabinetry And so much more!
+								</p>
+
+								<p style="text-align:left"><strong>Features</strong> of this property<p>
+								<hr style="color:light-gray; margin-top:-30px">
+								<ul class="list-inline">
+									<li>
+										<ul style="list-style-type:none">
+											<li>Price: $790,380</li>
+											<li>3 Bedrooms</li>
+											<li>3 full, 1 partial Bathrooms</li>
+											<li>Townhouse</li>
+										</ul>
+									</li>
+									<li>
+										<ul style="list-style-type:none">
+											<li>Status: For Sale</li>
+											<li>Lot Size: 1,438 sqft</li>
+											<li>Built in 2015</li>
+											<li>Neighborhood: Edenvale</li>
+										</ul>
+									</li>
+									<li>
+										<ul style="list-style-type:none">
+											<li>Zip: 95123</li>
+											<li>2,028 sqft</li>
+											<li>Parking: 1</li>
+											<li>Stories: 1 story</li>
+										</ul>
+									</li>
+								</ul>
+
+                                <p style="text-align:left"><strong>Residence 2 - Plan 2028 Plan</strong> Open House<p>
+								<hr style="color:light-gray; margin-top:-30px">
+								<ul class="list-inline">
+                                    <li>Saturday, April 29</li>
+                                    <li>1:00 PM to 3:00 PM</li>
+                                </ul>
+								<ul class="list-inline">
+                                    <li>Sunday, April 30</li>
+                                    <li>1:00 PM to 3:00 PM</li>
+                                </ul>
+
+								<p style="text-align:left"><strong>Agent</strong> for this property<p>
+								<hr style="color:light-gray; margin-top:-30px">
+								<ul class="list-inline" style="text-align:left">
+                                    <li>Elena Johal:</li>
+                                    <li>Mortensen Real Estate</li>
+                                </ul>
+
+								<br>
+								<p style="text-align:left"><strong>Directions</strong> for this property<p>
+								<hr style="color:light-gray; margin-top:-30px">
+								<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3176.1836070842596!2d-121.7995996851632!3d37.24335097985964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDE0JzM2LjEiTiAxMjHCsDQ3JzUwLjciVw!5e0!3m2!1sen!2sus!4v1493288280286" width="100%" height="550" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+								<br><br><br><br>
+								<button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js" integrity="sha384-mE6eXfrb8jxl0rzJDBRanYqgBxtJ6Unn4/1F7q4xRRyIw7Vdg9jP4ycT7x1iVsgb" crossorigin="anonymous"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/agency.min.js"></script>
+
+</body>
+
+</html>

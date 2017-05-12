@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Registration</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+		<script src = "angular/signup.js"></script>
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="assets/css/form-elements.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+
+      
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="assets/ico/favicon.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<style>        
+			#pswd_info {
+				float: right;
+				position:absolute;
+				width:500px;
+				padding:15px;
+				background:#fefefe;
+				font-size:.875em;
+				border-radius:5px;
+				box-shadow:0 1px 3px #ccc;
+				border:1px solid #ddd;
+			}
+			#pswd_info h4 {
+				margin:0 0 0px 0;
+				padding:0;
+				font-weight:normal;
+			}
+			#pswd_info::before {
+				content: "\25B2";
+				float: right;
+				position:absolute;
+				top:-12px;
+				left:45%;
+				font-size:14px;
+				line-height:14px;
+				color:#ddd;
+				text-shadow:none;
+				display:block;
+			}
+			.invalid {
+				padding-left:22px;
+				line-height:24px;
+				color:#ec3f41;
+			}
+			.valid {
+				padding-left:22px;
+				line-height:24px;
+				color:#3a7d34;
+			}
+			#pswd_info {
+				display:none;
+			}
+		</style>
+		
+    </head>
+
+    <body>
+		
+		
+	
+		<!-- Top content -->
+        <div class="top-content">
+        	
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 text">
+                            <h1><strong>Realtor</strong> Signup Form</h1>
+                        </div>
+                    </div>
+                    <div class="row" ng-app = "signupApp" ng-controller = "signup">
+                        <div class="col-sm-6 col-sm-offset-3 form-box">
+                        	
+                            <div class="form-bottom">
+			                    <form role="form" class="login-form">
+			                    	<div class="form-group">
+			                    		<label class="sr-only" for="form-username">Username</label>
+			                        	<input type="text" ng-model = "username" name="username" placeholder="Username" class="form-username form-control" id="userId" required>
+			                        </div>
+									
+			                        <div class="form-group">
+			                        	<label class="sr-only" for="form-password">Password</label>
+			                        	<input type="password" ng-model = "password" name="password" placeholder="Password" class="form-password form-control" id="password" required>
+			                        </div>
+									
+									<!--<div id="pswd_info">-->
+										<!--<h4>Password must meet the following requirements:</h4>-->
+										<!--<ul>-->
+											<!--<li id="letter" class="invalid">1 lower-case letter</li>-->
+											<!--<li id="capital" class="invalid">1 upper-case letter</li>-->
+											<!--<li id="number" class="invalid">1 number</li>-->
+											<!--<li id="length" class="invalid">7 or more characters</li>-->
+											<!--<li id="special" class="invalid">1 Special character: !,#,$,%</li>-->
+											<!--<li id="space" class="valid">Shall not contain space</li>-->
+											<!--<li id="userIdMatch" class="valid">Your password can not be the same as your User ID</li>-->
+										<!--</ul>	-->
+										<!--<strong>Strength:</strong><br>-->
+											<!--<meter id="low" low=".25" optimum=".8" high=".75" value=".2" style="height:30px; width:200px"></meter>-->
+											<!--<meter id="medium" low=".25" optimum=".85" high=".75" value=".5" style="height:30px; width:200px;display:none"></meter>-->
+											<!--<meter id="high" value="1" style="height:30px; width:200px;display:none"></meter>-->
+									<!--</div>-->
+									
+									<div class="form-group">
+			                        	<label class="sr-only"  for="form-password">Verify Password</label>
+			                        	<input type="password" ng-model = "vrpassword" name="vrpassword" placeholder="Verify Password" class="form-password form-control" id="vrpassword" required>
+			                        </div>
+									<div id="validate_stat" class="invalid"></div>
+									
+									
+									<div class="form-group">
+			                        	<label class="sr-only" for="form-password">Email</label>
+			                        	<input type="email" ng-model = "email" name="form-password" placeholder="Email Address" class="form-password form-control" style="height:50px" id="email" required>
+			                        </div>
+									<div id="validate_email" class="invalid"></div>
+									
+									
+									<div class="form-group">
+			                        	<label class="sr-only" for="form-password">Phone number</label>
+			                        	<input type="number" name="phone" ng-model = "phone" placeholder="(XXX)XXX XXXX" class="form-password form-control" id="userPhone" style="height:50px" required>
+			                        </div>
+									
+			                        <button type="submit" ng-click="submit();" id="rgstr_btn_realtor" value="Signup as Realtor" style="margin-left:213px;height:40px;width:100px;background-color:#2a6ddb; color:white; border-color:#2a6ddb">SIGN ME UP</button>
+			                    </form>
+		                    </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+		
+	 </body>
+
+	<!-- Javascript -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	
+	
+	<script src="assets/js/jquery-1.11.1.min.js"></script>
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/js/jquery.backstretch.min.js"></script>
+	<script src="assets/js/scripts.js"></script>
+        
+</html>
