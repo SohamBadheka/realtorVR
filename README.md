@@ -14,6 +14,9 @@ Technologies Used:
 ------------------
 
 Website: HTML/CSS
+
 Backend: NodeJS/ExpressJS
+
 Frontend: JQuery/AngularJS
+
 VR Models: Unity 3D
